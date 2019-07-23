@@ -1,16 +1,20 @@
 #navbar{
-  background: #0000;
+  position: fixed;
+  width: 100%;
+  top: 34px;
+  
+  z-index: 1000;
+  background: rgba(34,35,40,.84);
   box-shadow: 0 1px 2px rgba(0,0,0,.05);
   li{
     padding-left: 15px;
   }
-
  .nav-link{
     font-family: $secondary-font;
     font-weight: 500;
     color: $light;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 14px;  
     letter-spacing: .5px;
     -webkit-transition: all .25s ease;
        -moz-transition: all .25s ease;
@@ -32,13 +36,16 @@
 }
 
 .header-top{
-  background: rgba(34,35,40,1);
-  color: #000000;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: #111;
+  color: #fff;
   border-bottom: 1px solid rgba(255,255,255,.05);
 
   .header-top-socials {
     border-right: 1px solid rgba(255,255,255,.05);
-    padding: 12px 0px;
+    padding: 4px 0px;
   }
   
   .header-top-socials a{
