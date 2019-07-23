@@ -197,7 +197,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .section {
-  padding: 100px 0;
+  padding: 2rem 0;
 }
 
 .section-sm {
@@ -431,6 +431,7 @@ a:focus {
 }
 
 .header-top {
+  top: 0;
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -1464,5 +1465,9 @@ h3.quote::before {
   margin: 0;
   border-color: #f75757;
   position: absolute;
+}
+
+.main-wrapper {
+  margin-top: 7.6rem;
 }
 /*# sourceMappingURL=style.css.map */

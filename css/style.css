@@ -153,7 +153,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   background-repeat: repeat-x; }
 
 .section {
-  padding: 160px 0 100px; }
+  padding: 2rem 0; }
 
 .section-sm {
   padding: 70px 0; }
@@ -332,6 +332,7 @@ a:focus {
     color: #fff; }
 
 .header-top {
+  top: 0;
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -1137,5 +1138,8 @@ h3.quote::before {
   margin: 0;
   border-color: #f75757;
   position: absolute; }
+
+.main-wrapper {
+  margin-top: 7.6rem; }
 
 /*# sourceMappingURL=style.css.map */
