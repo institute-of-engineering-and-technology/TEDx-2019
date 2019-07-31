@@ -413,6 +413,7 @@ ul.dropdown-menu li {
   background-size: cover;
   background-position: 10% 0%;
   padding: 200px 0 280px 0;
+  height: 100vh;
   position: relative; }
   .slider .block h1 {
     font-size: 70px;
