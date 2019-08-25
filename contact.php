@@ -1,3 +1,32 @@
+<?php
+$result="";
+  if(isset($_POST['submit'])) {
+    require 'class.phpmailer.php';
+    require 'class.smtp.php';
+    require 'PHPMailerAutoload.php';
+    $mail = new PHPMailer;
+    $mail->IsSMTP();
+    $mail->Host='smtp.gmail.com';
+    $mail->Port=587;
+    $mail->SMTPAuth=true;
+    $mail->SMTPSecure='tls';
+    $mail->Username='novayato@gmail.com';
+    $mail->Password='research6589';
+
+    $mail->setFrom($_POST['email']);
+    $mail->addAddress('tedx@ietlucknow.ac.in');
+
+    $mail->isHTML(true);
+    $mail->Body='Name: '.$_POST['name'].'<br>Message: '.$_POST['message'].'<br>Email: '.$_POST['email'];
+
+    if(!$mail->send()){
+        $result= "something is wrong please fill in the fields correctly:{$mail->ErrorInfo}";
+    }
+    else{
+        $result= "message sent";
+    }
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -50,7 +79,7 @@
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-expand-lg" id="navbar">
+	<nav class="navbar navbar-expand-lg " id="navbar">
 		<div class="container">
 		  <a class="navbar-brand" href="index.html">
 		  	TEDx<span>IETLucknow</span>
@@ -64,18 +93,19 @@
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
 				<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-				<hr class="my-hr">
 			  </li>
 			  <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 			  <!---- <li class="nav-item"><a class="nav-link" href="speaker.html">Speakers</a></li>--->
 			   <li class="nav-item"><a class="nav-link" href="partner.html">Partners</a></li>
-			   
+			   <li class="nav-item dropdown">
+					
+			  </li>
                 <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
 			   
 			</ul>
 
 			<form class="form-lg-inline my-2 my-md-0 ml-lg-4 text-center">
-			  <a href="https://forms.gle/e7jQCtvsNmhDDe558" class="btn btn-solid-border btn-round-full">Register</a>
+			  <a href="contact.html" class="btn btn-solid-border btn-round-full">Register</a>
 			</form>
 		  </div>
 		</div>
@@ -84,169 +114,87 @@
 
 <!-- Header Close --> 
 
-<div class="main-wrapper mt-0">
-<!-- Slider Start -->
-<section class="slider">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-9 col-md-10">
-				<div class="block">
-					<!--<span class="d-block mb-3 text-white text-capitalize">Prepare for new future</span>-->
-					<h1 class="animated fadeInUp mb-5">Transcending<br>the Frontiers <br></h1>
-					<a href="contact.php" target="_blank" class="btn btn-main animated fadeInUp btn-round-full" >Register Here<i class="btn-icon fa fa-angle-right ml-2"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="main-wrapper ">
+<section class="page-title bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+         
+          <h1 class="text-capitalize mb-4 text-lg">Get in Touch</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Section Intro Start -->
+<!-- contact form start -->
+<section class="contact-form-wrap section">
+    <div class="container">
+        <div class="row">
+       
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                 <form id="contact-form" class="contact__form" method="post" action="">
+                 <!-- form message -->
+                 <h5 class="text-center text-success"><?= $result; ?></h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end message -->
+                    <span class="text-color">Send a message</span>
+                    <h3 class="text-md mb-4">Contact Form</h3>
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input name="email" type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group-2 mb-4">
+                        <textarea name="message" class="form-control" rows="4" placeholder="Your Message"></textarea>
+                    </div>
+                    <input class="btn btn-main"  type="submit" name="submit" value="send">
+                </form>
+            </div>
 
-<section class="section intro">
-	<div class="container">
-		<div class="row ">
-			<div class="col-lg-12 text-center">
-				<div class="section-title">
-					<span class="h6 text-color ">At TEDxIETLucknow, </span>
-					<h2 class="content-title">We intend to push forth the envelope of what a talk can accomplish. </h2>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-6 col-12">
-				<div class="intro-item mb-5 mb-lg-0"> 
-					<i class="ti-desktop color-one"></i>
-					<h4 class="mt-4 mb-3">What</h4>
-					<p>This event will feature a congregation of speakers covering diverse topics in  talks of 18 minutes or less.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="intro-item mb-5 mb-lg-0">
-					<i class="ti-medall color-one"></i> 
-					<h4 class="mt-4 mb-3">When</h4>
-					<p>TEDxIETLucknow will be held on the 5th of October, 2019.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="intro-item">
-					<i class="ti-layers-alt color-one"></i>
-					<h4 class="mt-4 mb-3">Where</h4>
-					<p>The event will be held at the Pt. Ramprasad Bismil Auditorium, IET Lucknow campus</p>
-				</div>
-			</div> 
-		</div>
-	</div>
-</section>
+            <div class="col-lg-5 col-sm-12">
+                <div class="contact-content pl-lg-5 mt-5 mt-lg-0">
+                    <span class="text-muted">We are Professionals</span>
+                    <h2 class="mb-5 mt-2">Don’t Hesitate to contact with us for any kind of information</h2>
 
-<!-- Section Intro END -->
-<!-- Section About Start -->
+                    <ul class="address-block list-unstyled">
+                        <li>
+                            <i class="ti-direction mr-3"></i>IET Lucknow, Sitapur Road, Lucknow, 226021
+                        </li>
+                        <li>
+                            <i class="ti-email mr-3"></i>Email: tedx@ietlucknow.ac.in
+                        </li>
+                        <li>
+                            <i class="ti-mobile mr-3"></i>Phone:+91-7007560980, +91-8707504523
+                        </li>
+                    </ul>
 
-
-<!-- Section About End -->
-
-
- <!-- Section Cta Start --> 
-
-<!--  Section Cta End-->
-<!-- Section Testimonial Start -->
-
-<!-- Section Testimonial End -->
-    
-    
-    
-    
-    
-
-    <!----<section class="section latest-blog bg-2">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7 text-center">
-				<div class="section-title">
-					<span class="h6 text-color">Latest News</span>
-					<h2 class="mt-3 content-title text-white">Latest articles to enrich knowledge</h2>
-				</div>
-			</div>
-		</div>
-
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-6 mb-5">
-				<div class="card bg-transparent border-0">
-					<img src="images/blog/1.jpg" alt="" class="img-fluid rounded">
-
-					<div class="card-body mt-2">
-						<div class="blog-item-meta">
-							<a href="#" class="text-white-50">Design<span class="ml-2 mr-2">/</span></a>
-							<a href="#"  class="text-white-50">Ui/Ux<span class="ml-2">/</span></a>
-							<a href="#" class="text-white-50 ml-2"><i class="fa fa-user mr-2"></i>admin</a>
-						</div> 
-
-						<h3 class="mt-3 mb-5 lh-36"><a href="#" class="text-white ">How to improve design with typography?</a></h3>
-
-						<a href="blog-single.html" class="btn btn-small btn-solid-border btn-round-full text-white">Learn More</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 mb-5">
-				<div class="card border-0 bg-transparent">
-					<img src="images/blog/2.jpg" alt="" class="img-fluid rounded">
-
-					<div class="card-body mt-2">
-						<div class="blog-item-meta">
-							<a href="#" class="text-white-50">Design<span class="ml-2 mr-2">/</span></a>
-							<a href="#"  class="text-white-50">Ui/Ux<span class="ml-2">/</span></a>
-							<a href="#" class="text-white-50 ml-2"><i class="fa fa-user mr-2"></i>admin</a>
-						</div>  
-
-						<h3 class="mt-3 mb-5 lh-36"><a href="#" class="text-white">Interactivity design may connect consumer</a></h3>
-
-						<a href="blog-single.html" class="btn btn-small btn-solid-border btn-round-full text-white">Learn More</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 mb-5">
-				<div class="card border-0 bg-transparent">
-					<img src="images/blog/3.jpg" alt="" class="img-fluid rounded">
-
-					<div class="card-body mt-2">
-						<div class="blog-item-meta">
-							<a href="#" class="text-white-50">Design<span class="ml-2 mr-2">/</span></a>
-							<a href="#"  class="text-white-50">Ui/Ux<span class="ml-2">/</span></a>
-							<a href="#" class="text-white-50 ml-2"><i class="fa fa-user mr-2"></i>admin</a>
-						</div> 
-
-						<h3 class="mt-3 mb-5 lh-36"><a href="#" class="text-white">Marketing Strategy to bring more affect</a></h3>
-
-						<a href="blog-single.html" class="btn btn-small btn-solid-border btn-round-full text-white">Learn More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>------->
-    
-    
-    
-
-<section class=" position-relative">
-	<div class="container">
-	<div class="cta-block-2 bg-gray p-5 rounded border-1">
-		<div class="row justify-content-center align-items-center ">
-			<div class="col-lg-7">
-				<div class="text-color">Speaker Nomination</div>
-				<div class="mt-2 mb-4 mb-lg-0">TEDxIETLucnow is looking for thought-leaders, innovators, artists, change-makers across all domains of human endeavour who want to share their vision and ideas; </div>>
-			</div>
-			<div class="col-lg-4">
-				<a href="https://docs.google.com/forms/d/e/1FAIpQLSccEqQ6wfg1tLwAGvd-aWU3V04YMDd8KJbE2lTnlD4p9qInxg/viewform?usp=sf_link" class="btn btn-main btn-round-full float-lg-right ">Nominate</a>
-			</div>
-		</div>
-	</div>
-</div>
-
+                    <ul class="social-icons list-inline mt-5">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/tedxietlucknow"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-    
-    
+
 <!-- footer Start -->
 <footer class="footer section">
 	<div class="container">
@@ -271,7 +219,7 @@
 						<li><a href="#">About</a></li>
 						<li><a href="#">Partners</a></li>
 						<li><a href="#">Team</a></li>
-						<li><a href="contact.php">Contact</a></li>
+						<li><a href="#">Contact</a></li>
 					</ul>
 				</div>
 			</div>
@@ -331,7 +279,7 @@
     
     <!-- Main jQuery -->
     <script src="plugins/jquery/jquery.js"></script>
-    <script src="js/contact.js"></script>
+    <!-- <script src="js/contact.js"></script> -->
     <!-- Bootstrap 4.3.1 -->
     <script src="plugins/bootstrap/js/popper.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -351,4 +299,3 @@
 
   </body>
   </html>
-   
