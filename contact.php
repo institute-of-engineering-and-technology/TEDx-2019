@@ -11,7 +11,7 @@ $result="";
     $mail->SMTPAuth=true;
     $mail->SMTPSecure='tls';
     $mail->Username='novayato@gmail.com';
-    $mail->Password='research6589';
+    
 
     $mail->setFrom($_POST['email']);
     $mail->addAddress('tedx@ietlucknow.ac.in');
