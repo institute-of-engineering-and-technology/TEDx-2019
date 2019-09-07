@@ -1,32 +1,13 @@
 <?php
-$result="";
-  if(isset($_POST['submit'])) {
-    require 'class.phpmailer.php';
-    require 'class.smtp.php';
-    require 'PHPMailerAutoload.php';
-    $mail = new PHPMailer;
-    $mail->IsSMTP();
-    $mail->Host='smtp.gmail.com';
-    $mail->Port=587;
-    $mail->SMTPAuth=true;
-    $mail->SMTPSecure='tls';
-    $mail->Username='novayato@gmail.com';
-    
+if(isset($_POST['submit'])){
+$to = "tedx@ietlucknow.ac.in";
+$subject = $_POST['email'];
+$txt = $_POST['message'];
+$headers = $_POST['name'];
 
-    $mail->setFrom($_POST['email']);
-    $mail->addAddress('tedx@ietlucknow.ac.in');
-
-    $mail->isHTML(true);
-    $mail->Body='Name: '.$_POST['name'].'<br>Message: '.$_POST['message'].'<br>Email: '.$_POST['email'];
-
-    if(!$mail->send()){
-        $result= "something is wrong please fill in the fields correctly:{$mail->ErrorInfo}";
-    }
-    else{
-        $result= "message sent";
-    }
-  }
-?>
+mail($to,$subject,$txt,$headers);
+}
+?> 
 <!doctype html>
 <html lang="en">
   <head>
@@ -73,7 +54,7 @@ $result="";
 				<div class="col-xs-8 text-center text-lg-right text-md-right">
 					<div class="header-top-info">
 						<!--<a href="tel:+23-345-67890">Contact Us : <span>+91-8707504523 , +91-7007560980</span></a>-->
-						<a href="mailto:support@gmail.com" ><i class="fa fa-envelope mr-2"></i><span>tedx@ietlucknow.ac.in</span></a>
+						<!-- <a href="mailto:support@gmail.com" ><i class="fa fa-envelope mr-2"></i><span>tedx@ietlucknow.ac.i</span></a> -->
 					</div>
 				</div>
 			</div>
