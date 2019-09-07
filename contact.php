@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['submit'])){
-$to = "tedx@ietlucknow.ac.in";
+$to = "event.tedx@gmail.com";
 $subject = $_POST['email'];
 $txt = $_POST['message'];
 $headers = $_POST['name'];
